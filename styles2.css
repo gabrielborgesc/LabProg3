@@ -1,0 +1,35 @@
+body{
+    background-image: url(./background.jpg);
+    background-size: cover; 
+    
+}
+#rectangle{
+    margin-top:7.5vh;
+    margin-left:12.5vw;
+    width: 75vw;
+    height: 85vh;
+    background-color: white;    
+    border-radius: 10%;
+    align-items: center;
+}
+#cadastrar{
+    text-align: center;
+    font-size: 72px;
+}
+p{
+    
+    margin-left:30vw;
+}
+label{
+    display:block;
+    position: relative;
+}
+#nome_cad{
+    text-align:center;
+}
+#email_cad{
+}
+#senha_cad{
+}
+#confsenha_cad{
+}
