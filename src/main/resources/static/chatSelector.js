@@ -2,17 +2,17 @@ chatList = [
 	{
 		id: 1,
 		name: 'Sala 2',
-		lastMessage: 'aidsjfaosifj'
+		lastMessage: 'oi'
 	},
 	{
 		id: 2,
 		name: 'Sala 3',
-		lastMessage: 'uala'
+		lastMessage: 'Teste'
 	},
 	{
 		id: 3,
 		name: 'Sala 4',
-		lastMessage: 'oi'
+		lastMessage: 'ola'
 	},
 	{
 		id: 4,
