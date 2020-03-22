@@ -28,9 +28,10 @@ messages = [
 ];
 
 
-
+// Função que adiciona uma mensagem na conversa
 function addMessage(message)
 {
+	// Verificação se a mensagem foi enviada pelo próprio usuário ou por outro
 	if(message.sender === username)
 		var messageContainer = CreateMessageContainer("sent", message.content);
 	else
@@ -40,6 +41,7 @@ function addMessage(message)
 	document.getElementById("container").appendChild(messageContainer);
 }
 
+// Função que gera a mensagem a ser adicionada dependendo de quem enviou
 function CreateMessageContainer(type, content)
 {
 	var messageContainer = document.createElement("div");
@@ -58,11 +60,14 @@ function CreateMessageContainer(type, content)
 	return messageContainer;
 }
 
+
+// Função que carrega as mensagens iniciais
 function loadMessages()
 {
 	messages.forEach(addMessage);
 }
 
+// Função que carrega a mensagem enviada pelo usuário na conversa
 function sendMessage()
 {
 	var messageSent = {};

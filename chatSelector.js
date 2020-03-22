@@ -43,6 +43,8 @@ function appendChat(chat)
 	// Cria a coluna do botão
 	var buttonColumn = document.createElement("td");
 	var button = document.createElement("button");
+	button.setAttribute('onclick', 'document.location = "chat.html";')
+
 	var buttonText = document.createTextNode("Entrar");
 	buttonColumn.appendChild(button);
 	button.appendChild(buttonText);
