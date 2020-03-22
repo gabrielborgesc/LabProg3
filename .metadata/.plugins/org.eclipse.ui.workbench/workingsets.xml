@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1576013019331_0" label="Java Main Sources" name="Java Main Sources">
+<item elementID="=websocket/src\/main\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=websocket/src\/main\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=websocket/target\/generated-sources\/annotations" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1576013019336_1" label="Java Test Sources" name="Java Test Sources">
+<item elementID="=websocket/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=websocket/target\/generated-test-sources\/test-annotations" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1576125381911_4" label="Tests" name="Tests">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/demo" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/boot" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1576183106861_5" label="fullTest" name="fullTest">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/web-server" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ms-hello" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1576847557366_6" label="Teacher" name="Teacher">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ms-teachers" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ms-user" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ms-question" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1584210376849_7" label="chat" name="chat">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/websocket" type="4"/>
+<item elementID="=chat" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=chat" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1576013020716_2" label="Window Working Set" name="Aggregate for window 1576013020716"/>
+<mruList name="chat"/>
+</workingSetManager>

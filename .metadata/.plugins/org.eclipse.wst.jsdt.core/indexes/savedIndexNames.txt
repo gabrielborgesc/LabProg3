@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/home/bernardo/Documents/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3244974718.index
+2296037582.index
+2800844325.index
+1120099659.index
+1394237623.index
+4179338300.index
+717618208.index

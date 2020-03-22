@@ -1,0 +1,5 @@
+package com.bernardo.websocket.messages;
+
+public class SentMessage {
+
+}

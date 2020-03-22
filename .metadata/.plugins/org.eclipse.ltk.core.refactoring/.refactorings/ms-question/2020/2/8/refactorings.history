@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.bernardo.msquestion.Question&apos; to &apos;Problem&apos;&#x0A;- Original project: &apos;ms-question&apos;&#x0A;- Original element: &apos;com.bernardo.msquestion.Question&apos;&#x0A;- Renamed element: &apos;com.bernardo.msquestion.Problem&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Question&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.bernardo.msquestion{Question.java[Question" matchStrategy="1" name="Problem" qualified="false" references="true" similarDeclarations="false" stamp="1581986614274" textual="false" version="1.0"/>
+</session>

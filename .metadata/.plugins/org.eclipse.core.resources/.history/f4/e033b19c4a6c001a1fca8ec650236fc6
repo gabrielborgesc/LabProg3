@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="chatSelector.js"></script>    
+</head>
+
+<body>
+    <div id="rectangle">
+        <div id="container">
+            <table id="chatTable" onload="loadChat();" >
+              <tr>
+                <th>Conversa</th>
+                <th>Última mensagem</th>
+                <th>Entrar</th>
+              </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

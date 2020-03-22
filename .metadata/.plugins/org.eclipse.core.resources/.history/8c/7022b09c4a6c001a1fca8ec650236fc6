@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+</head>
+
+<body>
+    <div id="rectangle">
+        <div id="cadastrar">Adicionar usuário a uma sala</div>
+        <form id = "signin-form" action="userAddedToRoom.html">
+            <p> 
+                <label for="nome_cad">Nome do usuário</label>
+                <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="username" />
+              </p>
+               
+              <p> 
+                <label for="nome_sala">Nome da sala</label>
+                <input id="nome_sala" name="nome_sala" required="required" type="text" placeholder="Nome da sala"/> 
+              </p>
+            
+               <p>
+                <input type="submit"s value="Adicionar" id="signin-button">
+               </p>
+        </form>
+
+    </div>
+</body>
+
+</html>

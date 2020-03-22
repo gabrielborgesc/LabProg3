@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;content&apos; in &apos;com.bernardo.msquestion.contentelements.TextContent&apos; to &apos;text&apos;&#x0A;- Original project: &apos;ms-question&apos;&#x0A;- Original element: &apos;com.bernardo.msquestion.contentelements.TextContent.content&apos;&#x0A;- Renamed element: &apos;com.bernardo.msquestion.contentelements.TextContent.text&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;content&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java&lt;com.bernardo.msquestion.contentelements{TextContent.java[TextContent^content" name="text" references="true" setter="false" stamp="1579374978262" textual="false" version="1.0"/>
+</session>
