@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "usr", schema = "public")
 public class User 
 {
 	@Id
@@ -16,6 +16,10 @@ public class User
 	private String username;
 	
 	private String password;
+	
+	private String email;
+	
+	private Type type;
 	
 	//
 	// Métodos de acesso
@@ -44,6 +48,21 @@ public class User
 		this.password = password;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
 	
 	
 }
