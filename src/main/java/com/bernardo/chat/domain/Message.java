@@ -19,9 +19,11 @@ public class Message {
 	
 	private Date datesent;
 	
-	private Integer user_id;
+	@Column(name="user_id")
+	private Integer userId;
 	
-	private Integer room_id;
+	@Column(name="room_id")
+	private Integer roomId;
 	
 	//
 	// Métodos de acesso
@@ -51,22 +53,28 @@ public class Message {
 		datesent = date;
 		//datesent = new Date() dessa forma datesent receberia o valor da data do computador
 	}
-	
+
 	public Integer getUserId() {
-		return user_id;
+		return userId;
 	}
 
-	public void setUserId(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public Integer getRoomId() {
-		return room_id;
+		return roomId;
 	}
 
-	public void setRoomId(Integer room_id) {
-		this.room_id = room_id;
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
 	}
+
+	public void setDatesent(Date datesent) {
+		this.datesent = datesent;
+	}
+	
+	
 	
 	
 	

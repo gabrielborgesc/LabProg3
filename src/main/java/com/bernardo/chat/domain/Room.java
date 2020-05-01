@@ -12,7 +12,8 @@ public class Room
 	@Column(name = "room_id")
 	private Integer id;
 	
-	private String roomname;
+	@Column(name = "room_name")
+	private String roomName;
 	
 	//
 	// Métodos de acesso
@@ -25,12 +26,11 @@ public class Room
 		this.id = id;
 	}
 
-	public String getRoomname() {
-		return roomname;
+	public String getRoomName() {
+		return roomName;
 	}
 	
-	public void serRoomname(String roomname) {
-		this.roomname = roomname;
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
 	}
-	
 }

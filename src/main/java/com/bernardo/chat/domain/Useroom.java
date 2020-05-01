@@ -2,6 +2,7 @@ package com.bernardo.chat.domain;
 
 //import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 //import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 @Table(name = "useroom", schema = "public")
 public class Useroom 
 {
+	@Id
 	private Integer user_id;
 	
 	private Integer room_id;

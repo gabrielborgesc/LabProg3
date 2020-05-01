@@ -8,5 +8,5 @@ import com.bernardo.chat.domain.Room;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer>
 {
-	public Room findByRoomname(String rooomname);
+	public Room findByRoomName(String roomName);
 }
