@@ -2,6 +2,10 @@ package com.bernardo.chat.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,6 +14,7 @@ import javax.persistence.Table;
 public class User 
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private Integer id;
 	
@@ -17,9 +22,10 @@ public class User
 	
 	private String password;
 	
-//	private String email;
-//	
-//	private Type type;
+	private String email;
+	
+	@Enumerated(EnumType.STRING)
+	private Type type;
 	
 	//
 	// Métodos de acesso
@@ -48,21 +54,21 @@ public class User
 	public void setPassword(String password) {
 		this.password = password;
 	}
-//	
-//	public String getEmail() {
-//		return email;
-//	}
-//
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
-//	
-//	public Type getType() {
-//		return type;
-//	}
-//
-//	public void setType(Type type) {
-//		this.type = type;
-//	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
 	
 }

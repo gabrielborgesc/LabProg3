@@ -9,4 +9,5 @@ import com.bernardo.chat.domain.User;
 public interface UserRepository extends JpaRepository<User, Integer>
 {
 	public User findByUsername(String username);
+	
 }
