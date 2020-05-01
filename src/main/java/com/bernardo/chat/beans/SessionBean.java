@@ -26,4 +26,9 @@ public class SessionBean
 		return sessionUser != null;
 	}
 	
+	public String getUsername()
+	{
+		return sessionUser == null ? null : sessionUser.getUsername();
+	}
+	
 }

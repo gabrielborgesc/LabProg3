@@ -1,9 +1,11 @@
 package com.bernardo.chat.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bernardo.chat.beans.SessionBean;
@@ -21,27 +23,25 @@ public class LoginService
 	SessionBean sessionBean;
 	
 	@PostMapping("/login")
-	public String doLogin(@RequestBody LoginRequest request)
+	public void doLogin(@RequestBody LoginRequest request)
 	{
 		User user = userRepository.findByUsername(request.getUsername());
 		
-		System.out.println(request.getUsername());
-		System.out.println(request.getPassword());
-		
-		if(request.getPassword()!= null && request.getPassword().equals(user.getPassword()))
-		{
+		if(validateUser(request, user))
 			sessionBean.login(user);
-			
-			return "success";
-		}
-		
-		return "failed";
+	}
+
+	private boolean validateUser(LoginRequest request, User user) {
+		return request.getPassword()!= null 
+				&& user != null 
+				&& request.getPassword().equals(user.getPassword());
 	}
 	
-	@GetMapping("/login")
-	public boolean logged()
+	@RequestMapping(value="/login", method=RequestMethod.GET, produces="text/plain")
+	@ResponseBody
+	public String logged()
 	{
-		return sessionBean.isLogged();
+		return sessionBean.isLogged() ? "true" : "false";
 	}
 }
 

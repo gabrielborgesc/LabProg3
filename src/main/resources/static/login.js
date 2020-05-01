@@ -3,17 +3,14 @@ var form = document.getElementById("login-form");
 var logged;
 var loginResponse;
 
-document.getElementById("login-button").addEventListener("click", function () {
-  form.submit();
-});
-
 function checkLogged()
 {
 	fetch("http://localhost:8080/login")
-	.then(response => logged = response);
+	.then(response => response.text())
+	.then(data => logged = data);
 }
 
-function login()
+function sendLoginRequest()
 {
 	var username = document.getElementById("nome_cad").value;
 	var password = document.getElementById("senha_cad").value;
@@ -34,6 +31,21 @@ function login()
                     'access-control-allow-origin':'*'
                   }
             });
+}
+
+function login()
+{
+	sendLoginRequest()
+	.then(() => checkLogged())
+	.then(() => validateLogin());
+}
+
+function validateLogin()
+{
+	if(logged == "true")
+		document.location.href = "adminsignedin.html";
+	else
+		console.log("voce falhou");
 }
 
 //$("document").ready(checkLogged);
