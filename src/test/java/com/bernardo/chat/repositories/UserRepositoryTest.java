@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.bernardo.chat.domain.Type;
 import com.bernardo.chat.domain.User;
 
 @RunWith(SpringRunner.class)
@@ -18,7 +19,8 @@ public class UserRepositoryTest
 	@Autowired
 	UserRepository repository;
 	
-	@Test
+	
+	//@Test
 	public void findAllTest()
 	{
 		List<User> users = repository.findAll();
@@ -28,7 +30,7 @@ public class UserRepositoryTest
 		
 	}
 	
-	@Test
+	//@Test
 	public void findById()
 	{
 		Optional<User> optional = repository.findById(1);
@@ -39,12 +41,46 @@ public class UserRepositoryTest
 		
 	}
 	
-	@Test
+	//@Test
 	public void findByUsername()
 	{
-		User gabilau = repository.findByUsername("gabilau");
+		User user = repository.findByUsername("gabriel");
 		
-		System.out.println(gabilau.getPassword());
+		//System.out.println(user.getPassword());
+	}
+	
+	
+	//@Test
+		public void insert(User newuser) {
+				
+			User user = repository.findByUsername(newuser.getUsername());
+			if(user==null) {
+			repository.save(newuser);
+		}
+		}
+	
+	//@Test
+		public void delete(String username) {
+			User user = repository.findByUsername(username);
+			if(user!=null) {
+			repository.deleteById(user.getId());
+			}
+		}
+		
+		
+	
+	@Test
+	public void test() {
+		User newuser = new User();
+		newuser.setUsername("werneck");
+		//newuser.setId(2);
+		newuser.setEmail("wern@gmail.com");
+		newuser.setPassword("abcde");
+		Type type = Type.user;
+		newuser.setType(type);
+		
+		delete("jbdjas");
+		
 	}
 	
 }

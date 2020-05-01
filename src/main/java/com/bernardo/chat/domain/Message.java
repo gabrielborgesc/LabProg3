@@ -2,6 +2,8 @@ package com.bernardo.chat.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.Date;
 public class Message {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "message_id")
 	private Integer id;
 	
@@ -45,13 +48,14 @@ public class Message {
 		this.text = text;
 	}
 	
-	public Date getDatesent() {
+	public Date getDateSent() {
 		return datesent;
 	}
 	
-	public void setDateSent(Date date) {
+	public void setDateSent() {
+		Date date = new Date(); //date recebe o valor da data do computador
 		datesent = date;
-		//datesent = new Date() dessa forma datesent receberia o valor da data do computador
+		
 	}
 
 	public Integer getUserId() {
@@ -69,13 +73,5 @@ public class Message {
 	public void setRoomId(Integer roomId) {
 		this.roomId = roomId;
 	}
-
-	public void setDatesent(Date datesent) {
-		this.datesent = datesent;
-	}
-	
-	
-	
-	
 	
 }

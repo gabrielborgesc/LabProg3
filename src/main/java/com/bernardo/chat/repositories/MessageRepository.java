@@ -10,6 +10,12 @@ import com.bernardo.chat.domain.Message;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Integer>
 {
-	public List<Message> findByRoomId(Integer roomId);///busca por todas as mensagens da sala
+	public List<Message> findAllByRoomId(Integer roomId);///busca por todas as mensagens da sala
 	///deveríamos restingir por data
+	
+	public List<Message> findAllByUserId(Integer userId);
+	
+	public List<Message> findAllByUserIdAndRoomId(Integer userId, Integer roomId);
+	
+	
 }
