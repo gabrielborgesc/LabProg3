@@ -1,5 +1,6 @@
 package com.bernardo.chat.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,11 @@ public class MessageRepositoryTest
 {
 	@Autowired
 	MessageRepository repository;
+	
+	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
 	RoomRepository roomRepository;
 	
 	
@@ -36,12 +41,12 @@ public class MessageRepositoryTest
 	
 	public void insert(String text, Integer UserId, Integer RoomId) {
 		
-//		Optional<User> optionalUser = userRepository.findById(UserId);
+		Optional<User> optionalUser = userRepository.findById(UserId);
 		
-//		Optional<Room> optionalRoom = roomRepository.findById(RoomId);
+		Optional<Room> optionalRoom = roomRepository.findById(RoomId);
 		
 		
-//	if(optionalUser.isPresent() && optionalRoom.isPresent()) {
+	if(optionalUser.isPresent() && optionalRoom.isPresent()) {
 		
 		Message message = new Message();
 		message.setDateSent();
@@ -51,18 +56,25 @@ public class MessageRepositoryTest
 		
 		repository.save(message);
 		
-//	}
-//	else {
-//		System.out.println("Usuario ou sala inexistentes");
-//		System.out.println();
-//	}
+	}
+	else {
+		System.out.println("Usuario ou sala inexistentes");
+		System.out.println();
+	}
 }
 		
 	
 	@Test
 	public void test() {
 		
-		insert("inserindo pelo Java", 9, 3);
+		List<Message> list = repository.findAllByRoomId(3);
+		Message m = new Message();
+		m.sortMessages(list);
+		
+		for(Message message:list) {
+			System.out.println(message.getText()+"  "+ message.getDateSent());
+			System.out.println();
+		}
 		}
 		
 	}

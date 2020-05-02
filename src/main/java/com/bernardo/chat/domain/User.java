@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user", schema = "public")
-public class User 
+public class User
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,5 +70,6 @@ public class User
 	public void setType(Type type) {
 		this.type = type;
 	}
+
 	
 }

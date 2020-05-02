@@ -67,7 +67,23 @@ public class UserRepositoryTest
 			}
 		}
 		
+		public void updateEmail(String username, String newEmail) {
+			User user = repository.findByUsername(username);
+			if(user!=null) {
+				user.setEmail(newEmail);
+				repository.save(user);
+				
+			}
+		}
 		
+		public void updatePassword(String username, String newPassword) {
+			User user = repository.findByUsername(username);
+			if(user!=null) {
+				user.setPassword(newPassword);
+				repository.save(user);
+				
+			}
+		}
 	
 	@Test
 	public void test() {
@@ -79,7 +95,7 @@ public class UserRepositoryTest
 		Type type = Type.user;
 		newuser.setType(type);
 		
-		delete("jbdjas");
+		updatePassword("gabriel", "12345");
 		
 	}
 	

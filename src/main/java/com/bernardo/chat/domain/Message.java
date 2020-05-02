@@ -6,12 +6,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "message", schema = "public")
 
-public class Message {
+public class Message implements Comparable<Message> {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,6 +78,17 @@ public class Message {
 
 	public void setRoomId(Integer roomId) {
 		this.roomId = roomId;
+	}
+
+	@Override
+	public int compareTo(Message message) {
+		return this.getDateSent().compareTo(message.getDateSent());
+	}
+	
+	public List<Message> sortMessages(List<Message> messaegList){
+		Collections.sort(messaegList);
+		Collections.reverse(messaegList);
+		return messaegList;
 	}
 	
 }
