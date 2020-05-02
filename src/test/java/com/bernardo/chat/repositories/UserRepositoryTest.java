@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.bernardo.chat.domain.Room;
 import com.bernardo.chat.domain.Type;
 import com.bernardo.chat.domain.User;
 
@@ -18,6 +19,9 @@ public class UserRepositoryTest
 {
 	@Autowired
 	UserRepository repository;
+	
+	@Autowired
+	RoomRepository roomRepository;
 	
 	
 	//@Test
@@ -95,7 +99,14 @@ public class UserRepositoryTest
 		Type type = Type.user;
 		newuser.setType(type);
 		
-		updatePassword("gabriel", "12345");
+		Room room = roomRepository.findByRoomName("chat1");
+		
+		User user = repository.findByUsername("gabriel");
+		
+		//user.setRooms();
+		//user.appendRooms(room);
+		
+		//repository.save(user);
 		
 	}
 	

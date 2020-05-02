@@ -1,9 +1,13 @@
 package com.bernardo.chat.domain;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +21,9 @@ public class Room
 	
 	@Column(name = "roomname")
 	private String roomName;
+	
+	@ManyToMany(mappedBy="rooms")
+	private Set<User> users;
 	
 	//
 	// Métodos de acesso
@@ -35,5 +42,17 @@ public class Room
 	
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers() {
+		this.users = new HashSet<User>();
+	}
+	
+	public void appendUsers(User user) {
+		users.add(user);
 	}
 }

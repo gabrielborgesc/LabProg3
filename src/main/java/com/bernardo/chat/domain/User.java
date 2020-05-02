@@ -1,5 +1,8 @@
 package com.bernardo.chat.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +21,9 @@ public class User
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private Integer id;
+	
+	@ManyToMany
+	private Set<Room> rooms;
 	
 	private String username;
 	
@@ -71,5 +78,16 @@ public class User
 		this.type = type;
 	}
 
+	public Set<Room> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms() {
+		this.rooms = new HashSet<Room>();
+	}
+	
+	public void appendRooms(Room room) {
+		rooms.add(room);
+	}
 	
 }
