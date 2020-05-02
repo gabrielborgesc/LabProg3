@@ -1,6 +1,7 @@
 package com.bernardo.chat.services;
 
 
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,9 @@ public class Teste {
 	
 	
 	
-	public static void main(String[] args) {
-		User user = userRepository.findByUsername("gabriel");
+	public static void main(String[] args) throws NotFoundException {
+		User user = userRepository.findByUsername("gabriel").
+				orElseThrow(() -> new NotFoundException("User gabriel not found"));
 		System.out.println(user.getUsername());
 	}
 	
