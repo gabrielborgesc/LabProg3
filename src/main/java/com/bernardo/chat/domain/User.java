@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user", schema = "public")
@@ -23,10 +24,17 @@ public class User
 	private String password;
 	
 	private String email;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Type type;
-	
+
+	public User(String username, String password, String email, Type type) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.type = type;
+	}
+
 	//
 	// Métodos de acesso
 	//
@@ -45,7 +53,6 @@ public class User
 	public void setUsername(String userName) {
 		this.username = userName;
 	}
-	
 
 	public String getPassword() {
 		return password;
@@ -70,6 +77,4 @@ public class User
 	public void setType(Type type) {
 		this.type = type;
 	}
-
-	
 }
