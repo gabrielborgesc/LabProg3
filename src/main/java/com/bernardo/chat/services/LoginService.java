@@ -20,14 +20,11 @@ public class LoginService {
     this.userService = userService;
   }
 
-  public void login(@RequestBody LoginCommand command) throws NotFoundException {
+  public void login(@RequestBody LoginCommand command) {
     String username = command.getUsername();
     String password = command.getPassword();
     User user =
-        this.userService
-            .findUserByUsername(username)
-            .orElseThrow(
-                () -> new NotFoundException("Could not find user with username " + username));
+        this.userService.findByUsername(username);
 
     if (validateUser(user, password)) sessionBean.login(user);
   }
