@@ -1,29 +1,30 @@
 package com.bernardo.chat.domain;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
+
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "message", schema = "public")
-
 public class Message implements Comparable<Message> {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "message_id")
 	private Integer id;
 	
 	private String text;
-	
-	private Date datesent;
-	
-	@Column(name="user_id")
-	private Integer userId;
-	
-	@Column(name="room_id")
-	private Integer roomId;
+
+	@CreatedDate
+	private Date createdAt;
+
+	@ManyToOne
+	private User user;
+
+	@ManyToOne
+	private Room room;
 	
 	//
 	// Métodos de acesso
@@ -36,50 +37,47 @@ public class Message implements Comparable<Message> {
 		this.id = id;
 	}
 
-	
 	public String getText() {
 		return text;
 	}
-	
+
 	public void setText(String text) {
 		this.text = text;
 	}
-	
-	public Date getDateSent() {
-		return datesent;
-	}
-	
-	public void setDateSent() {
-		Date date = new Date(); //date recebe o valor da data do computador
-		datesent = date;
-		
+
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public User getUser() {
+		return user;
 	}
 
-	public Integer getRoomId() {
-		return roomId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public void setRoomId(Integer roomId) {
-		this.roomId = roomId;
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
 	@Override
 	public int compareTo(Message message) {
-		return this.getDateSent().compareTo(message.getDateSent());
+		return this.getCreatedAt().compareTo(message.getCreatedAt());
 	}
 	
-	public List<Message> sortMessages(List<Message> messaegList){
-		Collections.sort(messaegList);
-		Collections.reverse(messaegList);
-		return messaegList;
+	public List<Message> sortMessages(List<Message> messages){
+		Collections.sort(messages);
+		Collections.reverse(messages);
+		return messages;
 	}
 	
 }

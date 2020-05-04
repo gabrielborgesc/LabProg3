@@ -1,80 +1,80 @@
 package com.bernardo.chat.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Objects;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "public")
-public class User
-{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private Integer id;
-	
-	private String username;
-	
-	private String password;
-	
-	private String email;
+public class User {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Integer id;
 
-	@Enumerated(EnumType.STRING)
-	private Type type;
+  private String username;
 
-	public User(String username, String password, String email, Type type) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.type = type;
-	}
+  private String password;
 
-	//
-	// Métodos de acesso
-	//
-	public Integer getId() {
-		return id;
-	}
+  private String email;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  @Enumerated(EnumType.STRING)
+  private Type type;
 
-	public String getUsername() {
-		return username;
-	}
+  @ManyToMany
+  @JoinTable(name = "user_room", joinColumns = @JoinColumn(name = "user_id"),
+          inverseJoinColumns = @JoinColumn(name = "room_id"))
+  private Set<Room> rooms = new HashSet<>();
 
-	public void setUsername(String userName) {
-		this.username = userName;
-	}
+  public User() {}
 
-	public String getPassword() {
-		return password;
-	}
+  public User(String username, String password, String email, Type type) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.type = type;
+  }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
+  //
+  // Métodos de acesso
+  //
+  public Integer getId() {
+    return id;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	public Type getType() {
-		return type;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public void setType(Type type) {
-		this.type = type;
-	}
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String userName) {
+    this.username = userName;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public Type getType() {
+    return type;
+  }
+
+  public void setType(Type type) {
+    this.type = type;
+  }
 }

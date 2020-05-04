@@ -31,9 +31,9 @@ public class Teste {
 		User user2 = new User("adriano", "1234", "email", Type.user);
 		User user3 = new User("borges", "1234", "email", Type.admin);
 
-		List<User> list = new List<User>();
+//		List<User> list = new List<User>();
 
-		list.sort(Comparator.comparing(User::getUsername()));
+//		list.sort(Comparator.comparing(User::getUsername()));
 
 	}
 	
