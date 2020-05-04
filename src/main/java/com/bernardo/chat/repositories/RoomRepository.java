@@ -1,12 +1,10 @@
 package com.bernardo.chat.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.bernardo.chat.domain.Room;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bernardo.chat.domain.Room;
-
 @Repository
-public interface RoomRepository extends JpaRepository<Room, Integer>
-{
-	public Room findByRoomName(String roomName);
+public interface RoomRepository extends CrudRepository<Room, Integer> {
+  public Room findByRoomName(String roomName);
 }

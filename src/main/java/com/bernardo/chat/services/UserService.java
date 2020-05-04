@@ -5,7 +5,9 @@ import com.bernardo.chat.domain.Room;
 import com.bernardo.chat.domain.User;
 import com.bernardo.chat.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
   private UserRepository userRepository;
   private MessageService messageService;
@@ -48,9 +50,8 @@ public class UserService {
   }
 
   public void sendMessage(User user, Room room, Message message) {
-    message.setDateSent();
-    message.setUserId(user.getId());
-    message.setRoomId(room.getId());
+    message.setUser(user);
+    message.setRoom(room);
 
     this.messageService.save(message);
   }
@@ -65,5 +66,9 @@ public class UserService {
 
   public void deleteById(Integer id) {
     this.userRepository.deleteById(id);
+  }
+
+  public Iterable<User> findAll() {
+    return this.userRepository.findAll();
   }
 }
