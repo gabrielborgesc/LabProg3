@@ -10,7 +10,7 @@ spring:
   datasource:
     url: "jdbc:postgresql://localhost:5432/labprog?currentSchema=chat"
     username: postgres
-    password: postgres
+    password: pareto123
 
   jpa:
     database: postgresql

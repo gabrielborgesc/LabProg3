@@ -2,11 +2,11 @@ package com.bernardo.chat.controllers;
 
 import com.bernardo.chat.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
+@Controller
 public class UserController {
   private UserService userService;
 
@@ -15,7 +15,7 @@ public class UserController {
     this.userService = userService;
   }
 
-  @RequestMapping("/users")
+  @GetMapping("/users")
   public String getUsers(Model model) {
     model.addAttribute("users", this.userService.findAll());
     return "users/list";

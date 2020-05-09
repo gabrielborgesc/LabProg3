@@ -90,7 +90,7 @@ public class UserRepositoryTest
 		//newuser.setId(2);
 		newuser.setEmail("wern@gmail.com");
 		newuser.setPassword("abcde");
-		Type type = Type.user;
+		Type type = Type.REGULAR;
 		newuser.setType(type);
 		
 		updatePassword("gabriel", "12345");

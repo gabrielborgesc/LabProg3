@@ -8,9 +8,6 @@ import com.bernardo.chat.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Comparator;
-import java.util.List;
-
 
 @RestController
 public class Teste {
@@ -27,9 +24,9 @@ public class Teste {
 
 	public static void main(String[] args) {
 
-		User user1 = new User("gabriel", "1234", "email", Type.admin);
-		User user2 = new User("adriano", "1234", "email", Type.user);
-		User user3 = new User("borges", "1234", "email", Type.admin);
+		User user1 = new User("gabriel", "1234", "email", Type.ADMIN);
+		User user2 = new User("adriano", "1234", "email", Type.REGULAR);
+		User user3 = new User("borges", "1234", "email", Type.ADMIN);
 
 //		List<User> list = new List<User>();
 

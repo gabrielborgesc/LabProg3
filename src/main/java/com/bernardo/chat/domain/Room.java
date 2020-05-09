@@ -15,6 +15,13 @@ public class Room {
   @ManyToMany(mappedBy = "rooms")
   private Set<User> users = new HashSet<>();
 
+  public Room() {
+  }
+
+  public Room(String name) {
+    this.name = name;
+  }
+
   //
   // Métodos de acesso
   //
