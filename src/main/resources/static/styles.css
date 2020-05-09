@@ -2,7 +2,7 @@ head{
     transition-duration: 0.5s;
 }
 body{
-    background-image: url(./background.jpg);
+    background-image: url(background.jpg);
     background-size: cover; 
     
 }

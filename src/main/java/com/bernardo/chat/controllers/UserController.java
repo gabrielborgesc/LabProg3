@@ -18,6 +18,6 @@ public class UserController {
   @GetMapping("/users")
   public String getUsers(Model model) {
     model.addAttribute("users", this.userService.findAll());
-    return "users/list";
+    return "user/list";
   }
 }

@@ -1,4 +1,4 @@
-package com.bernardo.chat.services;
+package com.bernardo.chat;
 
 
 import com.bernardo.chat.beans.SessionBean;
