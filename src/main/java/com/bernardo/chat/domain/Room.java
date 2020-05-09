@@ -1,36 +1,44 @@
 package com.bernardo.chat.domain;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Room
-{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String name;
+public class Room {
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
 
-	@ManyToMany(mappedBy = "rooms")
-	private Set<User> users = new HashSet<>();
-	
-	//
-	// Métodos de acesso
-	//
-	public Integer getId() {
-		return id;
-	}
+  private String name;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  @ManyToMany(mappedBy = "rooms")
+  private Set<User> users = new HashSet<>();
 
-	public String getRoomName() {
-		return name;
-	}
-	
-	public void setRoomName(String roomName) {
-		this.name = roomName;
-	}
+  //
+  // Métodos de acesso
+  //
+
+  public Integer getId() {
+    return id;
+  }
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String roomName) {
+    this.name = roomName;
+  }
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
+  }
 }

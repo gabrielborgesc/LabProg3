@@ -15,19 +15,15 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MessageRepositoryTest {
-  private MessageRepository messageRepository;
-  private UserRepository userRepository;
-  private RoomRepository roomRepository;
 
   @Autowired
-  public MessageRepositoryTest(
-      MessageRepository messageRepository,
-      UserRepository userRepository,
-      RoomRepository roomRepository) {
-    this.messageRepository = messageRepository;
-    this.userRepository = userRepository;
-    this.roomRepository = roomRepository;
-  }
+  private MessageRepository messageRepository;
+
+  @Autowired
+  private UserRepository userRepository;
+
+  @Autowired
+  private RoomRepository roomRepository;
 
   // @Test
   public void findAllTest() {
@@ -63,10 +59,10 @@ public class MessageRepositoryTest {
 
     List<Message> list = messageRepository.findAllByRoomId(3);
     Message m = new Message();
-    m.sortMessages(list);
+//    m.sortMessages(list);
 
     for (Message message : list) {
-      System.out.println(message.getText() + "  " + message.getCreatedAt());
+      System.out.println(message.getText() + "  " + message.getCreatedDate());
       System.out.println();
     }
   }

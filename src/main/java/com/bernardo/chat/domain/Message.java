@@ -3,81 +3,63 @@ package com.bernardo.chat.domain;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-public class Message implements Comparable<Message> {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String text;
+public class Message {
 
-	@CreatedDate
-	private Date createdAt;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
 
-	@ManyToOne
-	private User user;
+  private String text;
 
-	@ManyToOne
-	private Room room;
-	
-	//
-	// Métodos de acesso
-	//
-	public Integer getId() {
-		return id;
-	}
+  @CreatedDate private Date createdDate;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  @ManyToOne private User user;
 
-	public String getText() {
-		return text;
-	}
+  @ManyToOne private Room room;
 
-	public void setText(String text) {
-		this.text = text;
-	}
+  //
+  // Métodos de acesso
+  //
+  public Integer getId() {
+    return id;
+  }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+  public String getText() {
+    return text;
+  }
 
-	public User getUser() {
-		return user;
-	}
+  public void setText(String text) {
+    this.text = text;
+  }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+  public Date getCreatedDate() {
+    return createdDate;
+  }
 
-	public Room getRoom() {
-		return room;
-	}
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
+  }
 
-	public void setRoom(Room room) {
-		this.room = room;
-	}
+  public User getUser() {
+    return user;
+  }
 
-	@Override
-	public int compareTo(Message message) {
-		return this.getCreatedAt().compareTo(message.getCreatedAt());
-	}
-	
-	public List<Message> sortMessages(List<Message> messages){
-		Collections.sort(messages);
-		Collections.reverse(messages);
-		return messages;
-	}
-	
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public Room getRoom() {
+    return room;
+  }
+
+  public void setRoom(Room room) {
+    this.room = room;
+  }
 }
