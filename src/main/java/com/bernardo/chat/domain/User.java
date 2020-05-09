@@ -5,11 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name="users")
 public class User {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 
   private String username;
@@ -22,8 +21,10 @@ public class User {
   private Type type;
 
   @ManyToMany
-  @JoinTable(name = "user_room", joinColumns = @JoinColumn(name = "user_id"),
-          inverseJoinColumns = @JoinColumn(name = "room_id"))
+  @JoinTable(
+      name = "user_room",
+      joinColumns = @JoinColumn(name = "user_id"),
+      inverseJoinColumns = @JoinColumn(name = "room_id"))
   private Set<Room> rooms = new HashSet<>();
 
   public User() {}

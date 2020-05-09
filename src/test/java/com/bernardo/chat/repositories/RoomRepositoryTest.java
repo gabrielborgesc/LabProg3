@@ -12,18 +12,14 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RoomRepositoryTest {
-  private RoomRepository roomRepository;
-
   @Autowired
-  public RoomRepositoryTest(RoomRepository roomRepository) {
-    this.roomRepository = roomRepository;
-  }
+  private RoomRepository roomRepository;
 
   // @Test
   public void findAllTest() {
     Iterable<Room> rooms = roomRepository.findAll();
     for (Room room : rooms) {
-      System.out.println(room.getRoomName());
+      System.out.println(room.getName());
     }
   }
 
@@ -34,7 +30,7 @@ public class RoomRepositoryTest {
     if (optional.isPresent()) {
       Room room = optional.get();
 
-      System.out.println(room.getRoomName());
+      System.out.println(room.getName());
     } else {
       System.out.println("Null");
       System.out.println();
@@ -43,7 +39,7 @@ public class RoomRepositoryTest {
 
   // @Test
   public void findByRoomName() {
-    Room room = roomRepository.findByRoomName("chat1");
+    Room room = roomRepository.findByName("chat1");
     System.out.print(room.getId());
     System.out.println();
   }
@@ -51,7 +47,7 @@ public class RoomRepositoryTest {
   // @Test
   public void insert(Room newroom) {
 
-    Room room = roomRepository.findByRoomName(newroom.getRoomName());
+    Room room = roomRepository.findByName(newroom.getName());
     if (room == null) {
       roomRepository.save(newroom);
     }
@@ -59,7 +55,7 @@ public class RoomRepositoryTest {
 
   // @Test
   public void delete(String roomname) {
-    Room room = roomRepository.findByRoomName(roomname);
+    Room room = roomRepository.findByName(roomname);
     if (room != null) {
       roomRepository.deleteById(room.getId());
     }
@@ -69,7 +65,7 @@ public class RoomRepositoryTest {
   public void test() {
 
     Room room = new Room();
-    room.setRoomName("chat2");
+    room.setName("chat2");
     // insert(room);
     delete("chat2");
   }
