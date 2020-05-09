@@ -8,13 +8,13 @@ spring:
       suffix: .html
 
   datasource:
-    url: "jdbc:postgresql://localhost:5432/labprog?currentSchema=chat"
+    url: "jdbc:postgresql://192.168.91.55:5432/postgres?currentSchema=chat"
     username: postgres
-    password: pareto123
+    password: postgres
 
   jpa:
     database: postgresql
     show-sql: true
-    generate-ddl: true
+    generate-ddl: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate

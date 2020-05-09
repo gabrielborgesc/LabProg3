@@ -1,12 +1,12 @@
 package com.bernardo.chat.services;
 
-import com.bernardo.chat.beans.SessionBean;
-import com.bernardo.chat.domain.User;
-import com.bernardo.chat.dto.LoginCommand;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import com.bernardo.chat.beans.SessionBean;
+import com.bernardo.chat.domain.User;
+import com.bernardo.chat.dto.LoginCommand;
 
 @Service
 public class LoginService {
