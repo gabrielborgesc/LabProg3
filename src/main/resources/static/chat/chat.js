@@ -82,6 +82,6 @@ function sendMessage()
 
 $("document").ready(loadMessages);
 
-window.setInterval(function(){
-	addMessage({sender:'Gabilu', content:'oioioi'});
-}, 5000);
+//window.setInterval(function(){
+//	addMessage({sender:'Gabilu', content:'oioioi'});
+//}, 5000);
