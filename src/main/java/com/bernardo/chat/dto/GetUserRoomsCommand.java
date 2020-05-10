@@ -1,4 +1,4 @@
-package com.bernardo.chat.controllers;
+package com.bernardo.chat.dto;
 
 public class GetUserRoomsCommand {
     public String username;

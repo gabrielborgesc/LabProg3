@@ -1,3 +1,5 @@
+import {sendCommand} from "./utils";
+
 let form = document.getElementById("login-form");
 let logged;
 
@@ -12,22 +14,13 @@ function sendLoginRequest() {
     const password = document.getElementById("senha_cad").value;
 
     const loginRequest = {
-        username: username,
-        password: password
+        username,
+        password
     }
 
     console.log(loginRequest);
 
-    fetch("http://localhost:8081/login",
-        {
-            method: 'POST',
-            body: JSON.stringify(loginRequest),
-            headers: {
-                'Content-Type': 'application/json',
-                'access-control-allow-origin': '*'
-            }
-        })
-        .then(response => response.text())
+    sendCommand('login', loginRequest).then(response => response.text())
         .then(data => logged = data)
         .then(validateLogin);
 }
@@ -42,7 +35,7 @@ function validateLogin() {
     if (logged === "ADMIN")
         document.location.href = "adminSignedIn.html";
     else if (logged === "REGULAR")
-    	document.location.href = "chat/chatSelector.html";
+        document.location.href = "chat/chatSelector.html";
     else
         console.log("voce falhou");
 }

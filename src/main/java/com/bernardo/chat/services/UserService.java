@@ -1,6 +1,6 @@
 package com.bernardo.chat.services;
 
-import com.bernardo.chat.controllers.GetUserRoomsCommand;
+import com.bernardo.chat.dto.GetUserRoomsCommand;
 import com.bernardo.chat.domain.Message;
 import com.bernardo.chat.domain.Room;
 import com.bernardo.chat.domain.Type;
