@@ -26,11 +26,13 @@ public class UserService {
     }
   }
 
-  public void delete(String username) {
+  public boolean delete(String username) {
     User user = this.findByUsername(username);
     if (user != null) {
       this.deleteById(user.getId());
+      return true;
     }
+    return false;
   }
 
   public void updateEmail(String username, String newEmail) {
