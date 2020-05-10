@@ -1,11 +1,20 @@
 package com.bernardo.chat.services;
 
+import com.bernardo.chat.controllers.GetUserRoomsCommand;
 import com.bernardo.chat.domain.Message;
 import com.bernardo.chat.domain.Room;
+import com.bernardo.chat.domain.Type;
 import com.bernardo.chat.domain.User;
+import com.bernardo.chat.dto.CreateUserCommand;
+import com.bernardo.chat.dto.RemoveUserCommand;
+import com.bernardo.chat.dto.UpdateUserEmailCommand;
+import com.bernardo.chat.dto.UpdateUserPasswordCommand;
 import com.bernardo.chat.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -18,37 +27,55 @@ public class UserService {
     this.messageService = messageService;
   }
 
-  public void insert(User newuser) {
-
-    User user = this.findByUsername(newuser.getUsername());
+  public boolean create(CreateUserCommand command) {
+    User user = this.findByUsername(command.getUsername());
     if (user == null) {
-      this.save(newuser);
-    }
-  }
-
-  public boolean delete(String username) {
-    User user = this.findByUsername(username);
-    if (user != null) {
-      this.deleteById(user.getId());
+      this.save(
+              new User(command.getUsername(),
+                      command.getPassword(),
+                      command.getEmail(),
+                      Type.REGULAR)
+      );
       return true;
     }
     return false;
   }
 
-  public void updateEmail(String username, String newEmail) {
-    User user = this.findByUsername(username);
-    if (user != null) {
-      user.setEmail(newEmail);
-      this.save(user);
-    }
+  public boolean delete(RemoveUserCommand command) {
+    User user = this.findByUsername(command.getUsername());
+    if (user == null)
+      return false;
+
+    this.deleteById(user.getId());
+    return true;
   }
 
-  public void updatePassword(String username, String newPassword) {
-    User user = this.findByUsername(username);
-    if (user != null) {
-      user.setPassword(newPassword);
-      this.save(user);
-    }
+  public boolean updateEmail(UpdateUserEmailCommand command) {
+    User user = this.findByUsername(command.getUsername());
+    if (user == null)
+      return false;
+
+    user.setEmail(command.getEmail());
+    this.save(user);
+    return true;
+  }
+
+  public boolean updatePassword(UpdateUserPasswordCommand command) {
+    User user = this.findByUsername(command.getUsername());
+    if (user == null)
+      return false;
+
+    user.setPassword(command.getPassword());
+    this.save(user);
+    return true;
+  }
+
+  public Set<Room> getRooms(GetUserRoomsCommand command) {
+    User user = this.findByUsername(command.getUsername());
+    if(user == null)
+      return new HashSet<>();
+
+    return user.getRooms();
   }
 
   public void sendMessage(User user, Room room, Message message) {
