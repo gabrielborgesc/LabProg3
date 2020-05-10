@@ -3,6 +3,7 @@ package com.bernardo.chat.beans;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.bernardo.chat.domain.Type;
 import com.bernardo.chat.domain.User;
 
 @Component
@@ -29,6 +30,13 @@ public class SessionBean
 	public String getUsername()
 	{
 		return sessionUser == null ? null : sessionUser.getUsername();
+	}
+	
+	public Type getLoggedRole()
+	{
+		if(sessionUser == null)
+			return null;
+		return sessionUser.getType();
 	}
 	
 }

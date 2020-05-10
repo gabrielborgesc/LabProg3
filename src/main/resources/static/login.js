@@ -18,7 +18,7 @@ function sendLoginRequest() {
 
     console.log(loginRequest);
 
-    fetch("http://localhost:8080/login",
+    fetch("http://localhost:8081/login",
         {
             method: 'POST',
             body: JSON.stringify(loginRequest),
@@ -26,18 +26,23 @@ function sendLoginRequest() {
                 'Content-Type': 'application/json',
                 'access-control-allow-origin': '*'
             }
-        });
-}
-
-function login() {
-    sendLoginRequest()
-        .then(checkLogged)
+        })
+        .then(response => response.text())
+        .then(data => logged = data)
         .then(validateLogin);
 }
 
+function login() {
+    sendLoginRequest();
+//        .then(checkLogged)
+//        .then(validateLogin);
+}
+
 function validateLogin() {
-    if (logged === "true")
+    if (logged === "ADMIN")
         document.location.href = "adminSignedIn.html";
+    else if (logged === "REGULAR")
+    	document.location.href = "chat/chatSelector.html";
     else
         console.log("voce falhou");
 }

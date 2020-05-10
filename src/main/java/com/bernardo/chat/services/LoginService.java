@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bernardo.chat.beans.SessionBean;
+import com.bernardo.chat.domain.Type;
 import com.bernardo.chat.domain.User;
 import com.bernardo.chat.dto.LoginCommand;
 
@@ -30,10 +31,15 @@ public class LoginService {
   }
 
   private boolean validateUser(User user, String password) {
+	if(user == null || user.getPassword() == null) return false;
     return user.getPassword().equals(password);
   }
 
-  public String isLogged() {
-    return String.valueOf(sessionBean.isLogged());
+  public boolean isLogged() {
+    return sessionBean.isLogged();
+  }
+  
+  public Type userRole() {
+	  return sessionBean.getLoggedRole();
   }
 }
