@@ -1,5 +1,7 @@
 package com.bernardo.chat.domain;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +13,7 @@ public class User {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 
+  @UniqueElements
   private String username;
 
   private String password;
