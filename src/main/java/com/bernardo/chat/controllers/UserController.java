@@ -55,7 +55,6 @@ public class UserController {
   @RequestMapping(value = "/getUserRooms", method = RequestMethod.GET, produces = "text/plain")
   @ResponseBody
   public Set<Room> getUserRooms(@RequestBody GetUserRoomsCommand command) {
-    Set<Room> rooms = this.userService.getRooms(command);
-    return rooms;
+    return this.userService.getRooms(command);
   }
 }
