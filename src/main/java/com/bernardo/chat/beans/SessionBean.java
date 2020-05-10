@@ -3,6 +3,7 @@ package com.bernardo.chat.beans;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.bernardo.chat.domain.Room;
 import com.bernardo.chat.domain.Type;
 import com.bernardo.chat.domain.User;
 
@@ -11,6 +12,8 @@ import com.bernardo.chat.domain.User;
 public class SessionBean 
 {
 	private User sessionUser;
+	
+	private Room currentRoom;
 	
 	public void login(User user)
 	{
@@ -37,6 +40,14 @@ public class SessionBean
 		if(sessionUser == null)
 			return null;
 		return sessionUser.getType();
+	}
+	
+	public void enterRoom(Room room) {
+		this.currentRoom = room;
+	}
+	
+	public Room getCurrentRoom() {
+		return this.currentRoom;
 	}
 	
 }

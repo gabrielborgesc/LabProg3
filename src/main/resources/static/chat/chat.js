@@ -4,26 +4,6 @@ messages = [
 {
 	sender: "Bernardo",
 	content: "oi"
-},
-{
-	sender: "Borges",
-	content: "oi"
-},
-{
-	sender: "Lauren",
-	content: "oi"
-},
-{
-	sender: "GV",
-	content: "oi"
-},
-{
-	sender: "Plena",
-	content: "oi"
-},
-{
-	sender: "Bernardo",
-	content: "oi"
 }
 ];
 
@@ -81,6 +61,51 @@ function sendMessage()
 
 
 $("document").ready(loadMessages);
+
+
+
+
+var stompClient = null;
+
+function connect() {
+    var socket = new SockJS('/mywebsockets');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/message', function (message) {
+            processMessage(JSON.parse(message.body).content);
+        });
+    });
+}
+
+function disconnect() {
+    if (stompClient !== null) {
+        stompClient.disconnect();
+    }
+    console.log("Disconnected");
+}
+
+function sendMessage() {
+	var message = {
+			content: 'oioioi',
+			userId: 1,
+			roomId: 1
+	};
+	stompClient.send("/app/message", {}, JSON.stringify(message));
+}
+
+function processMessage(message) {
+	console.log(message.content);
+}
+
+
+
+
+
+
+
+
+
 
 //window.setInterval(function(){
 //	addMessage({sender:'Gabilu', content:'oioioi'});
