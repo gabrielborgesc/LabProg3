@@ -46,7 +46,12 @@ public class RoomService {
     Room room = this.findByName(command.getRoomName());
     if (room == null)
       return false;
-
+    for ( User user : room.getUsers() ) {
+    	RemoveUserFromRoomCommand newCommand = new RemoveUserFromRoomCommand();
+    	newCommand.setRoomName(room.getName());
+    	newCommand.setUsername(user.getUsername());
+    	this.removeUser(newCommand);
+    }
     this.deleteById(room.getId());
     return true;
   }
