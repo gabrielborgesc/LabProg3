@@ -1,5 +1,24 @@
 var success;
 
+function deleteUserFromList(username){
+	const removeUserCommand = {
+		username: username
+	}
+
+	console.log(removeUserCommand);
+
+	fetch("/removeUser",
+		{
+			method: 'POST',
+			body: JSON.stringify(removeUserCommand),
+			headers: {
+				'Content-Type': 'application/json',
+				'access-control-allow-origin': '*'
+			}
+		})
+		.then(response => location.reload());
+}
+
 function appendUser(user)
 {
 	// Cria o elemento para uma nova linha da tabela
@@ -22,6 +41,17 @@ function appendUser(user)
 	var type = document.createTextNode(user.type);
 	typeColumn.appendChild(type);
 	row.appendChild(typeColumn);
+
+	// Cria a coluna do botão
+	var buttonColumn = document.createElement("td");
+	var button = document.createElement("button");
+//	button.setAttribute('onclick', 'document.location = "chat.html";')
+	button.setAttribute('onclick', 'deleteUserFromList("' + user.username + '");')
+
+	var buttonText = document.createTextNode("Deletar");
+	buttonColumn.appendChild(button);
+	button.appendChild(buttonText);
+	row.appendChild(buttonColumn);
 
 	// Adiciona a linha criada na tabela
 	document.getElementById("listTable").appendChild(row);
