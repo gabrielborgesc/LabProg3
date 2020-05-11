@@ -22,6 +22,7 @@ public class LoginService {
   }
 
   public void login(@RequestBody LoginCommand command) {
+	sessionBean.logout();
     String username = command.getUsername();
     String password = command.getPassword();
     User user =
@@ -33,6 +34,11 @@ public class LoginService {
   private boolean validateUser(User user, String password) {
 	if(user == null || user.getPassword() == null) return false;
     return user.getPassword().equals(password);
+  }
+  
+  public void logout()
+  {
+	  sessionBean.logout();
   }
 
   public boolean isLogged() {
