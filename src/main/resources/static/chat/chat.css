@@ -39,6 +39,7 @@
 #container
 {
 	height: 85%;
+	overflow: scroll;
 }
 
 .textbox-container
