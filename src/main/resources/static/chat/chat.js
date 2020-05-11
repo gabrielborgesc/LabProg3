@@ -10,10 +10,11 @@ function addMessage(message)
 	if(message.userId === chatInfo.userId)
 		var messageContainer = CreateMessageContainer("sent", message.content);
 	else
-		var messageContainer = CreateMessageContainer("received", message.content);
+		var messageContainer = CreateMessageContainer("received", message.username + ': ' + message.content);
 
 
 	document.getElementById("container").appendChild(messageContainer);
+	updateScroll();
 }
 
 // Função que gera a mensagem a ser adicionada dependendo de quem enviou
@@ -88,6 +89,7 @@ function sendMessage() {
 			roomId: chatInfo.roomId
 	};
 	stompClient.send("/app/message", {}, JSON.stringify(message));
+	$('input[name=message]').val('');
 }
 
 function processMessage(message) {
@@ -106,7 +108,13 @@ function getChatInfo()
             .then(response => response.json())
             .then(data => chatInfo = data)
             .then(getMessages)
-            .then(connect);
+            .then(connect)
+            .then(prepareHeader);
+}
+
+function prepareHeader()
+{
+	$('#title').html(chatInfo.roomName);
 }
 
 function getMessages()
@@ -121,6 +129,12 @@ function getMessages()
             .then(response => response.json())
             .then(data => messages = data)
             .then(loadMessages);
+}
+
+function updateScroll()
+{
+	var objDiv = document.getElementById("container");
+	objDiv.scrollTop = objDiv.scrollHeight;
 }
 
 $("document").ready(getChatInfo);
