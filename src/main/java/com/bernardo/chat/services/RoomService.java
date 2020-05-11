@@ -39,7 +39,7 @@ public class RoomService {
   }
 
   public boolean delete(DeleteRoomCommand command) {
-    Room room = this.findByName(command.getName());
+    Room room = this.findByName(command.getRoomName());
     if (room == null)
       return false;
 
