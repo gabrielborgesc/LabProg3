@@ -5,16 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MessageCommand 
 {
 	private String content;
-	
+	private String username;
 	private Integer userId;
-	
 	private Integer roomId;
 	
 	public MessageCommand(@JsonProperty("content") String content,
+						  @JsonProperty("username") String username,
 						  @JsonProperty("userId") Integer userId,
 						  @JsonProperty("roomId") Integer roomId)
 	{
 		this.content = content;
+		this.username = username;
 		this.userId = userId;
 		this.roomId = roomId;
 	}
@@ -41,6 +42,14 @@ public class MessageCommand
 
 	public void setRoomId(Integer roomId) {
 		this.roomId = roomId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 }

@@ -1,13 +1,13 @@
 package com.bernardo.chat.dto;
 
 public class DeleteRoomCommand {
-    public String name;
+    public String roomName;
 
-    public String getName() {
-        return name;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }

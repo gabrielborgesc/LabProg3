@@ -1,4 +1,4 @@
-username = "Bernardo";
+var chatInfo;
 
 messages = [
 {
@@ -12,7 +12,7 @@ messages = [
 function addMessage(message)
 {
 	// Verificação se a mensagem foi enviada pelo próprio usuário ou por outro
-	if(message.sender === username)
+	if(message.sender === chatInfo.username)
 		var messageContainer = CreateMessageContainer("sent", message.content);
 	else
 		var messageContainer = CreateMessageContainer("received", message.content);
@@ -88,6 +88,7 @@ function disconnect() {
 function sendMessage() {
 	var message = {
 			content: 'oioioi',
+			username: 'bernardo',
 			userId: 1,
 			roomId: 1
 	};
@@ -98,6 +99,18 @@ function processMessage(message) {
 	console.log(message.content);
 }
 
+function getChatInfo()
+{
+    fetch("http://localhost:8081/chatInfo",
+            {
+                method: 'GET',
+                headers: {
+                    'access-control-allow-origin': '*'
+                }
+            })
+            .then(response => response.json())
+            .then(data => chatInfo = data)
+}
 
 
 
