@@ -46,7 +46,7 @@ function validateLogin() {
     else if (logged === "REGULAR")
         document.location.href = "chat/chatSelector.html";
     else
-        console.log("voce falhou");
+        window.alert("Não foi possível realizar essa operação");
 }
 
 //$("document").ready(checkLogged);
