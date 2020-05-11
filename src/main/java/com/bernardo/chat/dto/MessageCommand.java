@@ -36,20 +36,20 @@ public class MessageCommand
 		this.userId = userId;
 	}
 
-	public Integer getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(Integer roomId) {
-		this.roomId = roomId;
-	}
-
 	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public Integer getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
 	}
 	
 }

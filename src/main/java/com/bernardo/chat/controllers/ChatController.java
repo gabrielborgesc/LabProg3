@@ -28,9 +28,7 @@ public class ChatController {
 	
 	@RequestMapping(value="/messages", method = RequestMethod.GET)
 	public List<MessageCommand> retrieveChatMessages() {
-		
-		
-		return null;
+		return chatService.retrieveChatMessages();
 	}
 
 }

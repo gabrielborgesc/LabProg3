@@ -57,9 +57,7 @@ public class MessageRepositoryTest {
   @Test
   public void test() {
 
-    List<Message> list = messageRepository.findAllByRoomId(3);
-    Message m = new Message();
-//    m.sortMessages(list);
+    List<Message> list = messageRepository.findAllByRoomIdOrderByCreatedDate(999999);
 
     for (Message message : list) {
       System.out.println(message.getText() + "  " + message.getCreatedDate());

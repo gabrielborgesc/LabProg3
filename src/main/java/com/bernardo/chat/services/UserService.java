@@ -1,30 +1,28 @@
 package com.bernardo.chat.services;
 
-import com.bernardo.chat.dto.GetUserRoomsCommand;
-import com.bernardo.chat.domain.Message;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bernardo.chat.domain.Room;
 import com.bernardo.chat.domain.Type;
 import com.bernardo.chat.domain.User;
 import com.bernardo.chat.dto.CreateUserCommand;
+import com.bernardo.chat.dto.GetUserRoomsCommand;
 import com.bernardo.chat.dto.RemoveUserCommand;
 import com.bernardo.chat.dto.UpdateUserEmailCommand;
 import com.bernardo.chat.dto.UpdateUserPasswordCommand;
 import com.bernardo.chat.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 public class UserService {
   private UserRepository userRepository;
-  private MessageService messageService;
 
   @Autowired
-  public UserService(UserRepository userRepository, MessageService messageService) {
+  public UserService(UserRepository userRepository) {
     this.userRepository = userRepository;
-    this.messageService = messageService;
   }
 
   public boolean create(CreateUserCommand command) {
@@ -84,13 +82,6 @@ public class UserService {
       return new HashSet<>();
 
     return user.getRooms();
-  }
-
-  public void sendMessage(User user, Room room, Message message) {
-    message.setUser(user);
-    message.setRoom(room);
-
-    this.messageService.save(message);
   }
 
   public User findByUsername(String username) {

@@ -1,18 +1,13 @@
 var chatInfo;
 
-messages = [
-{
-	sender: "Bernardo",
-	content: "oi"
-}
-];
+var messages;
 
 
 // Função que adiciona uma mensagem na conversa
 function addMessage(message)
 {
 	// Verificação se a mensagem foi enviada pelo próprio usuário ou por outro
-	if(message.sender === chatInfo.username)
+	if(message.userId === chatInfo.userId)
 		var messageContainer = CreateMessageContainer("sent", message.content);
 	else
 		var messageContainer = CreateMessageContainer("received", message.content);
@@ -48,19 +43,19 @@ function loadMessages()
 }
 
 // Função que carrega a mensagem enviada pelo usuário na conversa
-function sendMessage()
-{
-	var messageSent = {};
+//function sendMessage()
+//{
+//	var messageSent = {};
+//
+//	messageSent.sender = username;
+//	messageSent.content = $('input[name=message]').val();
+//
+//	addMessage(messageSent);
+//	$('input[name=message]').val('');
+//}
 
-	messageSent.sender = username;
-	messageSent.content = $('input[name=message]').val();
-
-	addMessage(messageSent);
-	$('input[name=message]').val('');
-}
 
 
-$("document").ready(loadMessages);
 
 
 
@@ -72,8 +67,8 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/message', function (message) {
-            processMessage(JSON.parse(message.body).content);
+        stompClient.subscribe('/topic/' + chatInfo.roomId, function (message) {
+            addMessage(JSON.parse(message.body));
         });
     });
 }
@@ -87,10 +82,10 @@ function disconnect() {
 
 function sendMessage() {
 	var message = {
-			content: 'oioioi',
-			username: 'bernardo',
-			userId: 1,
-			roomId: 1
+			content: $('input[name=message]').val(),
+			username: chatInfo.username,
+			userId: chatInfo.userId,
+			roomId: chatInfo.roomId
 	};
 	stompClient.send("/app/message", {}, JSON.stringify(message));
 }
@@ -101,7 +96,7 @@ function processMessage(message) {
 
 function getChatInfo()
 {
-    fetch("http://localhost:8081/chatInfo",
+    fetch("/chatInfo",
             {
                 method: 'GET',
                 headers: {
@@ -110,12 +105,25 @@ function getChatInfo()
             })
             .then(response => response.json())
             .then(data => chatInfo = data)
+            .then(getMessages)
+            .then(connect);
 }
 
+function getMessages()
+{
+	fetch("/messages",
+            {
+                method: 'GET',
+                headers: {
+                    'access-control-allow-origin': '*'
+                }
+            })
+            .then(response => response.json())
+            .then(data => messages = data)
+            .then(loadMessages);
+}
 
-
-
-
+$("document").ready(getChatInfo);
 
 
 
