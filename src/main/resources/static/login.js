@@ -1,4 +1,4 @@
-import {sendCommand} from "./utils";
+//import {sendCommand} from "./utils";
 
 let form = document.getElementById("login-form");
 let logged;
@@ -14,13 +14,22 @@ function sendLoginRequest() {
     const password = document.getElementById("senha_cad").value;
 
     const loginRequest = {
-        username,
-        password
+        username: username,
+        password: password
     }
 
     console.log(loginRequest);
 
-    sendCommand('login', loginRequest).then(response => response.text())
+    fetch("http://localhost:8081/login",
+        {
+            method: 'POST',
+            body: JSON.stringify(loginRequest),
+            headers: {
+                'Content-Type': 'application/json',
+                'access-control-allow-origin': '*'
+            }
+        })
+        .then(response => response.text())
         .then(data => logged = data)
         .then(validateLogin);
 }
