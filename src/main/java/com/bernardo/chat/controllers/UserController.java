@@ -1,10 +1,7 @@
 package com.bernardo.chat.controllers;
 
 import com.bernardo.chat.domain.Room;
-import com.bernardo.chat.dto.CreateUserCommand;
-import com.bernardo.chat.dto.RemoveUserCommand;
-import com.bernardo.chat.dto.UpdateUserEmailCommand;
-import com.bernardo.chat.dto.UpdateUserPasswordCommand;
+import com.bernardo.chat.dto.*;
 import com.bernardo.chat.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,8 +49,7 @@ public class UserController {
     return String.valueOf(updated);
   }
 
-  @RequestMapping(value = "/getUserRooms", method = RequestMethod.GET, produces = "text/plain")
-  @ResponseBody
+  @RequestMapping(value = "/getUserRooms", method = RequestMethod.GET)
   public Set<Room> getUserRooms(@RequestBody GetUserRoomsCommand command) {
     return this.userService.getRooms(command);
   }

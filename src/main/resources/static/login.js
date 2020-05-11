@@ -1,3 +1,5 @@
+//import {sendCommand} from "./utils";
+
 let form = document.getElementById("login-form");
 let logged;
 
@@ -42,9 +44,9 @@ function validateLogin() {
     if (logged === "ADMIN")
         document.location.href = "adminSignedIn.html";
     else if (logged === "REGULAR")
-    	document.location.href = "chat/chatSelector.html";
+        document.location.href = "chat/chatSelector.html";
     else
-        console.log("voce falhou");
+        window.alert("Não foi possível realizar essa operação");
 }
 
 //$("document").ready(checkLogged);

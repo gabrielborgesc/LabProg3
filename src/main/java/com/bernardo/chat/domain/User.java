@@ -13,7 +13,7 @@ public class User {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 
-  @UniqueElements
+  //@UniqueElements
   private String username;
 
   private String password;

@@ -29,10 +29,10 @@ public class RoomService {
   }
 
   public boolean create(CreateRoomCommand command) {
-    Room room = this.findByName(command.getName());
+    Room room = this.findByName(command.getRoomName());
 
     if (room == null) {
-      this.save(new Room(command.getName()));
+      this.save(new Room(command.getRoomName()));
       return true;
     }
     return false;

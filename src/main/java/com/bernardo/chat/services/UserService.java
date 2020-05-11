@@ -1,6 +1,6 @@
 package com.bernardo.chat.services;
 
-import com.bernardo.chat.controllers.GetUserRoomsCommand;
+import com.bernardo.chat.dto.GetUserRoomsCommand;
 import com.bernardo.chat.domain.Message;
 import com.bernardo.chat.domain.Room;
 import com.bernardo.chat.domain.Type;
@@ -28,17 +28,25 @@ public class UserService {
   }
 
   public boolean create(CreateUserCommand command) {
-    User user = this.findByUsername(command.getUsername());
-    if (user == null) {
-      this.save(
-              new User(command.getUsername(),
-                      command.getPassword(),
-                      command.getEmail(),
-                      Type.REGULAR)
-      );
-      return true;
-    }
-    return false;
+	String password = command.getPassword();
+	String retype = command.getRetype();
+	
+	if (!password.equals(retype))
+		return false;
+	else {
+	    User user = this.findByUsername(command.getUsername());
+	    if (user == null) {
+	      this.save(
+	              new User(command.getUsername(),
+	                      command.getPassword(),
+	                      command.getEmail(),
+	                      Type.REGULAR)
+	      );
+	      return true;
+	    }
+	    return false;
+	}
+
   }
 
   public boolean delete(RemoveUserCommand command) {
