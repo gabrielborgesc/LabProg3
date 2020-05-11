@@ -4,7 +4,7 @@ function addUserToRoom() {
 
     const addUserToRoomCommand = {
         username: username,
-        roomname: roomname
+        roomName: roomname
     }
 
     console.log(addUserToRoomCommand);
