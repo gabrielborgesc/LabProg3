@@ -1,10 +1,10 @@
 function addUserToRoom() {
     const username = document.getElementById("nome_cad").value;
-    const roomname = document.getElementById("nome_sala").value;
+    const roomName = document.getElementById("nome_sala").value;
 
     const addUserToRoomCommand = {
         username: username,
-        roomName: roomname
+        roomName: roomName
     }
 
     console.log(addUserToRoomCommand);
