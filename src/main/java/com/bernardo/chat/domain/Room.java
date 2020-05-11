@@ -12,7 +12,7 @@ public class Room {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 
-  @UniqueElements
+  //@UniqueElements
   private String name;
 
   @ManyToMany(mappedBy = "rooms")

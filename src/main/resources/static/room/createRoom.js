@@ -2,7 +2,7 @@ function createRoom() {
     const roomName = document.getElementById("nome_cad").value;
 
     const createRoomCommand = {
-        roomName: roomName,
+        roomName: roomName
     }
 
     console.log(createRoomCommand);
@@ -17,10 +17,12 @@ function createRoom() {
             }
         })
         .then(response => response.text())
+        .then(data => success = data)
         .then(callback);
 }
 
-function callback(success) {
+function callback() {
+    console.log("callback", success);
     if (success === "true")
         document.location.href = "roomCreated.html";
     else

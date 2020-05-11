@@ -22,6 +22,7 @@ function removeRoom() {
 }
 
 function callback() {
+	console.log(success);
     if (success === "true")
         document.location.href = "roomRemoved.html";
     else
