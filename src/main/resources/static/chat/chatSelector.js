@@ -1,27 +1,4 @@
-chatList = [
-	{
-		id: 1,
-		name: 'Sala 2',
-		lastMessage: 'oi'
-	},
-	{
-		id: 2,
-		name: 'Sala 3',
-		lastMessage: 'Teste'
-	},
-	{
-		id: 3,
-		name: 'Sala 4',
-		lastMessage: 'ola'
-	},
-	{
-		id: 4,
-		name: 'Sala 5',
-		lastMessage: 'hello'
-	}
-
-];
-
+var success;
 
 function appendChat(chat)
 {
@@ -43,7 +20,8 @@ function appendChat(chat)
 	// Cria a coluna do botão
 	var buttonColumn = document.createElement("td");
 	var button = document.createElement("button");
-	button.setAttribute('onclick', 'document.location = "chat.html";')
+//	button.setAttribute('onclick', 'document.location = "chat.html";')
+	button.setAttribute('onclick', 'selectChat(' + chat.id + ');')
 
 	var buttonText = document.createTextNode("Entrar");
 	buttonColumn.appendChild(button);
@@ -54,9 +32,48 @@ function appendChat(chat)
 	document.getElementById("chatTable").appendChild(row);
 }
 
+function selectChat(chatId)
+{
+	fetch("/selectChat",
+	        {
+	            method: 'POST',
+	            body: JSON.stringify({'chatId': chatId}),
+	            headers: {
+	                'Content-Type': 'application/json',
+	                'access-control-allow-origin': '*'
+	            }
+	        })
+	        .then(response => response.text())
+	        .then(data => success = data)
+	        .then(callback);
+}
+
+function callback()
+{
+	if(success === "true")
+		document.location = "chat.html";
+	else
+		console.log("voce falhou");
+}
+
+function retrieveChat()
+{
+	fetch("/chats",
+	        {
+	            method: 'GET',
+	            headers: {
+	                'Content-Type': 'application/json',
+	                'access-control-allow-origin': '*'
+	            }
+	        })
+	        .then(response => response.json())
+	        .then(data => chatList = data)
+	        .then(loadChat);
+}
+
 function loadChat()
 {
 	chatList.forEach(appendChat);
 }
 
-$("document").ready(loadChat);
+$("document").ready(retrieveChat);

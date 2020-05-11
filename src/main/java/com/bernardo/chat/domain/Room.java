@@ -15,7 +15,7 @@ public class Room {
   @UniqueElements
   private String name;
 
-  @ManyToMany(mappedBy = "rooms")
+  @ManyToMany(mappedBy = "rooms", fetch = FetchType.EAGER)
   private Set<User> users = new HashSet<>();
 
   public Room() {
