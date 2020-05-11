@@ -3,11 +3,12 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="styles2.css">
+    <script type="text/javascript" src="signup.js"></script>
 </head>
 
 <body>
     <div id="rectangle">
-        <div id="cadastrar">Cadastrar usuÃ¡rio</div>
+        <div id="cadastrar">Cadastrar usuário</div>
         <form id = "signin-form" action="../templates/user/userSignedup.html">
             <p> 
                 <label for="nome_cad">username</label>
@@ -30,7 +31,7 @@
               </p>
 
                <p>
-                <input type="submit"s value="Entrar" id="signin-button">
+                <input type="button" value="Entrar" onclick="signup()" id="signin-button">
                </p>
         </form>
 

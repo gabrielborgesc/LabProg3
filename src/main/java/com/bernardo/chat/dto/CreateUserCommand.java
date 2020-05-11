@@ -5,6 +5,7 @@ import com.bernardo.chat.domain.Type;
 public class CreateUserCommand {
     public String username;
     public String password;
+	public String retype;
     public String email;
     public Type type;
 
@@ -24,6 +25,14 @@ public class CreateUserCommand {
         this.password = password;
     }
 
+    public String getRetype() {
+		return retype;
+	}
+
+	public void setRetype(String retype) {
+		this.retype = retype;
+	}
+    
     public String getEmail() {
         return email;
     }

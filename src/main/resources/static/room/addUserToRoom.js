@@ -1,24 +1,30 @@
-import {sendCommand} from "../utils";
-
-const addUser = () => {
+function addUserToRoom() {
     const username = document.getElementById("nome_cad").value;
-    const roomName = document.getElementById("nome_sala").value;
+    const roomname = document.getElementById("nome_sala").value;
 
     const addUserToRoomCommand = {
-        username,
-        roomName
+        username: username,
+        roomname: roomname
     }
 
     console.log(addUserToRoomCommand);
 
-    sendCommand('addUserToRoom', addUserToRoomCommand).then(callback)
+    fetch("http://localhost:8081/addUserToRoom",
+        {
+            method: 'POST',
+            body: JSON.stringify(addUserToRoomCommand),
+            headers: {
+                'Content-Type': 'application/json',
+                'access-control-allow-origin': '*'
+            }
+        })
+        .then(response => response.text())
+        .then(callback);
 }
 
-const callback = (response) => {
-    const data = response.text();
-
-    if (data === "true")
+function callback(success) {
+    if (success === "true")
         document.location.href = "userAddedToRoom.html";
     else
-        window.alert('Failed')
+        window.alert("Não foi possível realizar essa operação");
 }
