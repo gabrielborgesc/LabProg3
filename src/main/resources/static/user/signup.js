@@ -5,6 +5,7 @@ function signup() {
     const retype = document.getElementById("confsenha_cad").value;
     const type = document.getElementById("type_cad").value;
 
+
     const signupCommand = {
         username: username,
         email: email,
