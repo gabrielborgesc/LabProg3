@@ -14,6 +14,7 @@ function addMessage(message)
 
 
 	document.getElementById("container").appendChild(messageContainer);
+	updateScroll();
 }
 
 // Função que gera a mensagem a ser adicionada dependendo de quem enviou
@@ -128,6 +129,12 @@ function getMessages()
             .then(response => response.json())
             .then(data => messages = data)
             .then(loadMessages);
+}
+
+function updateScroll()
+{
+	var objDiv = document.getElementById("container");
+	objDiv.scrollTop = objDiv.scrollHeight;
 }
 
 $("document").ready(getChatInfo);
