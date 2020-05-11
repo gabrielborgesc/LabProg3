@@ -47,6 +47,8 @@ public class SessionBean
 	
 	public void refresh()
 	{
+		if(sessionUser == null)
+			return;
 		this.sessionUser = userRepository.findById(sessionUser.getId()).get();
 	}
 	

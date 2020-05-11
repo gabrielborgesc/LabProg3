@@ -34,7 +34,7 @@ public class LoginController {
     return String.valueOf(this.loginService.isLogged());
   }
   
-  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  @RequestMapping(value = "/logout", method = RequestMethod.GET)
   public void logout() {
     loginService.logout();
   }
