@@ -3,12 +3,14 @@ function signup() {
     const email = document.getElementById("email_cad").value;
     const password = document.getElementById("senha_cad").value;
     const retype = document.getElementById("confsenha_cad").value;
+    const type = document.getElementById("type_cad").value;
 
     const signupCommand = {
         username: username,
         email: email,
         password: password,
-        retype: retype
+        retype: retype,
+        type: type
     }
     
 

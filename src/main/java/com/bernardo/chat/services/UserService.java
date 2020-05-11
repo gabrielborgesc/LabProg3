@@ -31,17 +31,24 @@ public class UserService {
   public boolean create(CreateUserCommand command) {
 	String password = command.getPassword();
 	String retype = command.getRetype();
+	Type type;
 	
 	if (!password.equals(retype))
 		return false;
 	else {
 	    User user = this.findByUsername(command.getUsername());
 	    if (user == null) {
+        if(command.getType() == Type.ADMIN){
+          type = Type.ADMIN;
+        }
+        else{
+          type = Type.REGULAR;
+        }
 	      this.save(
 	              new User(command.getUsername(),
 	                      command.getPassword(),
 	                      command.getEmail(),
-	                      Type.REGULAR)
+	                      type)
 	      );
 	      return true;
 	    }
