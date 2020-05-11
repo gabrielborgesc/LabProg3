@@ -9,7 +9,7 @@ function removeUserFromRoom() {
 
     console.log(removeUserFromRoomCommand);
 
-    fetch("http://localhost:8081/removeUserFromRoom",
+    fetch("/removeUserFromRoom",
         {
             method: 'POST',
             body: JSON.stringify(removeUserFromRoomCommand),

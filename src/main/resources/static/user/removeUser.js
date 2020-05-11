@@ -8,7 +8,7 @@ function removeUser() {
 
     console.log(removeUserCommand);
 
-    fetch("http://localhost:8081/removeUser",
+    fetch("/removeUser",
         {
             method: 'POST',
             body: JSON.stringify(removeUserCommand),

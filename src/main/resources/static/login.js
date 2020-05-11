@@ -20,7 +20,7 @@ function sendLoginRequest() {
 
     console.log(loginRequest);
 
-    fetch("http://localhost:8081/login",
+    fetch("/login",
         {
             method: 'POST',
             body: JSON.stringify(loginRequest),

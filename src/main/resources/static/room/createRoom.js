@@ -7,7 +7,7 @@ function createRoom() {
 
     console.log(createRoomCommand);
 
-    fetch("http://localhost:8081/createRoom",
+    fetch("/createRoom",
         {
             method: 'POST',
             body: JSON.stringify(createRoomCommand),

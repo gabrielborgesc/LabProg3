@@ -9,7 +9,7 @@ function addUserToRoom() {
 
     console.log(addUserToRoomCommand);
 
-    fetch("http://localhost:8081/addUserToRoom",
+    fetch("/addUserToRoom",
         {
             method: 'POST',
             body: JSON.stringify(addUserToRoomCommand),

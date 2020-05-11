@@ -7,7 +7,7 @@ function removeRoom() {
 
     console.log(removeRoomCommand);
 
-    fetch("http://localhost:8081/removeRoom",
+    fetch("/removeRoom",
         {
             method: 'POST',
             body: JSON.stringify(removeRoomCommand),

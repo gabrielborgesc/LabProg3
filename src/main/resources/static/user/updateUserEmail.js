@@ -10,7 +10,7 @@ function updateUserEmail() {
 
     console.log(updateUserEmailCommand);
 
-    fetch("http://localhost:8081/updateUserEmail",
+    fetch("/updateUserEmail",
         {
             method: 'POST',
             body: JSON.stringify(updateUserEmailCommand),

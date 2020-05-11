@@ -14,7 +14,7 @@ function signup() {
 
     console.log(signupCommand);
 
-    fetch("http://localhost:8081/createUser",
+    fetch("/createUser",
         {
             method: 'POST',
             body: JSON.stringify(signupCommand),

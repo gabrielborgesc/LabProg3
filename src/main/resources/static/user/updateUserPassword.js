@@ -10,7 +10,7 @@ function updateUserPassword() {
 
     console.log(updateUserPasswordCommand);
 
-    fetch("http://localhost:8081/updateUserPassword",
+    fetch("/updateUserPassword",
         {
             method: 'POST',
             body: JSON.stringify(updateUserPasswordCommand),
