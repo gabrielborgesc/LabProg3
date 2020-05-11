@@ -25,6 +25,8 @@ public class ChatSelectorService {
 	}
 	
 	public List<ChatListCommand> chats() {
+		sessionBean.refresh();
+		
 		if(!validateRooms(sessionBean.getCurrentUser()))
 			return null;
 		

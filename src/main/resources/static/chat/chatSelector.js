@@ -11,12 +11,6 @@ function appendChat(chat)
 	nameColumn.appendChild(name);
 	row.appendChild(nameColumn);
 
-	// Cria a coluna de última mensagem
-	var lastMessageColumn = document.createElement("td");
-	var lastMessage = document.createTextNode(chat.lastMessage);
-	lastMessageColumn.appendChild(lastMessage);
-	row.appendChild(lastMessageColumn);
-
 	// Cria a coluna do botão
 	var buttonColumn = document.createElement("td");
 	var button = document.createElement("button");
