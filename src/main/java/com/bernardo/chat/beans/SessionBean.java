@@ -50,4 +50,8 @@ public class SessionBean
 		return this.currentRoom;
 	}
 	
+	public User getCurrentUser() {
+		return this.sessionUser;
+	}
+	
 }

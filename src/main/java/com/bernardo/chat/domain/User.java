@@ -23,7 +23,7 @@ public class User {
   @Enumerated(EnumType.STRING)
   private Type type;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "user_room",
       joinColumns = @JoinColumn(name = "user_id"),
