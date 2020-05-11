@@ -1,18 +1,18 @@
-function addUserToRoom() {
+function removeUserFromRoom() {
     const username = document.getElementById("nome_cad").value;
     const roomName = document.getElementById("nome_sala").value;
 
-    const addUserToRoomCommand = {
+    const removeUserFromRoomCommand = {
         username: username,
         roomName: roomName
     }
 
-    console.log(addUserToRoomCommand);
+    console.log(removeUserFromRoomCommand);
 
-    fetch("http://localhost:8081/addUserToRoom",
+    fetch("http://localhost:8081/removeUserFromRoom",
         {
             method: 'POST',
-            body: JSON.stringify(addUserToRoomCommand),
+            body: JSON.stringify(removeUserFromRoomCommand),
             headers: {
                 'Content-Type': 'application/json',
                 'access-control-allow-origin': '*'
@@ -24,7 +24,7 @@ function addUserToRoom() {
 
 function callback(success) {
     if (success === "true")
-        document.location.href = "userAddedToRoom.html";
+        document.location.href = "userRemovedFromRoom.html";
     else
         window.alert("Não foi possível realizar essa operação");
 }

@@ -1,30 +1,32 @@
-function addUserToRoom() {
+function updateUserPassword() {
     const username = document.getElementById("nome_cad").value;
-    const roomName = document.getElementById("nome_sala").value;
+    const password = document.getElementById("senha_cad").value;
 
-    const addUserToRoomCommand = {
+    const updateUserPasswordCommand = {
         username: username,
-        roomName: roomName
+        password: password
     }
+    
 
-    console.log(addUserToRoomCommand);
+    console.log(updateUserPasswordCommand);
 
-    fetch("http://localhost:8081/addUserToRoom",
+    fetch("http://localhost:8081/updateUserPassword",
         {
             method: 'POST',
-            body: JSON.stringify(addUserToRoomCommand),
+            body: JSON.stringify(updateUserPasswordCommand),
             headers: {
                 'Content-Type': 'application/json',
                 'access-control-allow-origin': '*'
             }
         })
         .then(response => response.text())
+        .then(data => success = data)
         .then(callback);
 }
 
-function callback(success) {
+function callback() {
     if (success === "true")
-        document.location.href = "userAddedToRoom.html";
+        document.location.href = "userUpdated.html";
     else
         window.alert("Não foi possível realizar essa operação");
 }
