@@ -24,5 +24,5 @@ function callback(success) {
     if (success === "true")
         document.location.href = "roomCreated.html";
     else
-        window.alert("Não foi possível completar esta operação");
+        window.alert("Não foi possível realizar essa operação");
 }
