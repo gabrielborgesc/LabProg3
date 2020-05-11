@@ -1,6 +1,8 @@
 package com.bernardo.chat.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.bernardo.chat.dto.GetUserRoomsCommand;
 import com.bernardo.chat.dto.RemoveUserCommand;
 import com.bernardo.chat.dto.UpdateUserEmailCommand;
 import com.bernardo.chat.dto.UpdateUserPasswordCommand;
+import com.bernardo.chat.dto.UserCommand;
 import com.bernardo.chat.repositories.UserRepository;
 
 @Service
@@ -96,7 +99,18 @@ public class UserService {
     this.userRepository.deleteById(id);
   }
 
-  public Iterable<User> findAll() {
-    return this.userRepository.findAll();
+  public List<UserCommand> findAll() {
+	  List<UserCommand> result = new ArrayList<>();
+	  for(User user : userRepository.findAll())
+		  result.add(convert(user));
+    return result;
   }
+
+	private UserCommand convert(User user) {
+		UserCommand newUser = new UserCommand();
+		newUser.setUsername(user.getUsername());
+		newUser.setType(user.getType().toString());
+		newUser.setEmail(user.getEmail());
+		return newUser;
+	}
 }

@@ -1,18 +1,22 @@
 package com.bernardo.chat.controllers;
 
-import com.bernardo.chat.dto.AddUserToRoomCommand;
-import com.bernardo.chat.dto.CreateRoomCommand;
-import com.bernardo.chat.dto.DeleteRoomCommand;
-import com.bernardo.chat.dto.RemoveUserFromRoomCommand;
-import com.bernardo.chat.services.RoomService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import com.bernardo.chat.dto.AddUserToRoomCommand;
+import com.bernardo.chat.dto.CreateRoomCommand;
+import com.bernardo.chat.dto.DeleteRoomCommand;
+import com.bernardo.chat.dto.RemoveUserFromRoomCommand;
+import com.bernardo.chat.dto.RoomCommand;
+import com.bernardo.chat.services.RoomService;
+
+@RestController
 public class RoomController {
 
     private RoomService roomService;
@@ -49,5 +53,10 @@ public class RoomController {
     public String removeUserFromRoom(@RequestBody RemoveUserFromRoomCommand command) {
         Boolean removed = this.roomService.removeUser(command);
         return String.valueOf(removed);
+    }
+    
+    @RequestMapping(value = "/getRoomList", method = RequestMethod.GET)
+    public List<RoomCommand> getRoomList() {
+      return this.roomService.findAll();
     }
 }

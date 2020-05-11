@@ -1,18 +1,25 @@
 package com.bernardo.chat.controllers;
 
-import com.bernardo.chat.domain.Room;
-import com.bernardo.chat.dto.*;
-import com.bernardo.chat.services.UserService;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
+import com.bernardo.chat.domain.Room;
+import com.bernardo.chat.dto.CreateUserCommand;
+import com.bernardo.chat.dto.GetUserRoomsCommand;
+import com.bernardo.chat.dto.RemoveUserCommand;
+import com.bernardo.chat.dto.UpdateUserEmailCommand;
+import com.bernardo.chat.dto.UpdateUserPasswordCommand;
+import com.bernardo.chat.dto.UserCommand;
+import com.bernardo.chat.services.UserService;
 
-@Controller
+@RestController
 public class UserController {
   private UserService userService;
 
@@ -52,5 +59,10 @@ public class UserController {
   @RequestMapping(value = "/getUserRooms", method = RequestMethod.GET)
   public Set<Room> getUserRooms(@RequestBody GetUserRoomsCommand command) {
     return this.userService.getRooms(command);
+  }
+  
+  @RequestMapping(value = "/getUserList", method = RequestMethod.GET)
+  public List<UserCommand> getUserList() {
+    return this.userService.findAll();
   }
 }

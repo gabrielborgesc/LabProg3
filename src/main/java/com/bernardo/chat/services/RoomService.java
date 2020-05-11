@@ -1,5 +1,11 @@
 package com.bernardo.chat.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bernardo.chat.domain.Message;
 import com.bernardo.chat.domain.Room;
 import com.bernardo.chat.domain.User;
@@ -7,11 +13,9 @@ import com.bernardo.chat.dto.AddUserToRoomCommand;
 import com.bernardo.chat.dto.CreateRoomCommand;
 import com.bernardo.chat.dto.DeleteRoomCommand;
 import com.bernardo.chat.dto.RemoveUserFromRoomCommand;
+import com.bernardo.chat.dto.RoomCommand;
+import com.bernardo.chat.dto.UserCommand;
 import com.bernardo.chat.repositories.RoomRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class RoomService {
@@ -91,5 +95,18 @@ public class RoomService {
 
   private Room save(Room room) {
     return this.roomRepository.save(room);
+  }
+  
+  public List<RoomCommand> findAll() {
+	  List<RoomCommand> result = new ArrayList<>();
+	  for(Room room : roomRepository.findAll())
+		  result.add(convert(room));
+    return result;
+  }
+
+  private RoomCommand convert(Room room) {
+	RoomCommand newRoom = new RoomCommand();
+	newRoom.setRoomName(room.getName());
+	return newRoom;
   }
 }
