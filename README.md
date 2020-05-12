@@ -1,4 +1,4 @@
-# LabProg3
+# Chat do Plena
 
 ### Descrição textual dos casos de uso [aqui](https://docs.google.com/document/d/1c3sMRhIGTMgjT0X0DqFo04FBkhRzbYnJk78xklyHT_8/edit?usp=sharing)
 
