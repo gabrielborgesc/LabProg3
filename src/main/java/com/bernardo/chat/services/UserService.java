@@ -38,7 +38,7 @@ public class UserService {
 	else {
 	    User user = this.findByUsername(command.getUsername());
 	    if (user == null) {
-        if(command.getType() == Type.ADMIN){
+        if(command.getType().equals("Admin")){
           type = Type.ADMIN;
         }
         else{

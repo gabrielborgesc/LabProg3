@@ -3,16 +3,13 @@ function signup() {
     const email = document.getElementById("email_cad").value;
     const password = document.getElementById("senha_cad").value;
     const retype = document.getElementById("confsenha_cad").value;
-    const type;
+    var type = document.getElementById('type_cad_r').value;
 
     if (document.getElementById('type_cad_a').checked) {
     type = document.getElementById('type_cad_a').value;
     }
 
-    else{
-    type = document.getElementById('type_cad_r').value;
-    }
-
+    
     const signupCommand = {
         username: username,
         email: email,

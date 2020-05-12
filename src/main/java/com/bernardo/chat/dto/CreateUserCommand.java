@@ -1,13 +1,13 @@
 package com.bernardo.chat.dto;
 
-import com.bernardo.chat.domain.Type;
+//import com.bernardo.chat.domain.Type;
 
 public class CreateUserCommand {
     public String username;
     public String password;
 	public String retype;
     public String email;
-    public Type type;
+    public String type;
 
     public String getUsername() {
         return username;
@@ -41,11 +41,11 @@ public class CreateUserCommand {
         this.email = email;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 }
