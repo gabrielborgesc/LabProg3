@@ -45,6 +45,7 @@ public class MessageService {
 		newMessage.setText(message.getContent());
 		newMessage.setRoom(roomRepository.findById(message.getRoomId()).get());
 		newMessage.setUser(userRepository.findById(message.getUserId()).get());
+		newMessage.setCreatedDate();
 		return newMessage;
 	}
 }
