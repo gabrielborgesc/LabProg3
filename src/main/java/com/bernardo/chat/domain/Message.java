@@ -43,8 +43,8 @@ public class Message {
     return createdDate;
   }
 
-  public void setCreatedDate(Date createdDate) {
-    this.createdDate = createdDate;
+  public void setCreatedDate() {
+    this.createdDate = new Date();
   }
 
   public User getUser() {
