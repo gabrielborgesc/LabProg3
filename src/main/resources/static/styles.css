@@ -2,6 +2,7 @@ head{
     transition-duration: 0.5s;
 }
 body{
+/* 	background-color: #eb4034; */
     background-image: url(background.jpg);
     background-size: cover; 
     

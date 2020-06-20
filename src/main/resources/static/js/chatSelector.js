@@ -13,13 +13,16 @@ function appendChat(chat)
 
 	// Cria a coluna do botão
 	var buttonColumn = document.createElement("td");
-	var button = document.createElement("button");
+	var button = document.createElement("input");
 //	button.setAttribute('onclick', 'document.location = "chat.html";')
-	button.setAttribute('onclick', 'selectChat(' + chat.id + ');')
+	button.setAttribute('onclick', 'selectChat(' + chat.id + ');');
+	button.setAttribute('type', 'button');
+	button.setAttribute('value', 'Entrar');
+	button.setAttribute('class', 'tableButton');
 
-	var buttonText = document.createTextNode("Entrar");
+//	var buttonText = document.createTextNode("Entrar");
 	buttonColumn.appendChild(button);
-	button.appendChild(buttonText);
+//	button.appendChild(buttonText);
 	row.appendChild(buttonColumn);
 
 	// Adiciona a linha criada na tabela

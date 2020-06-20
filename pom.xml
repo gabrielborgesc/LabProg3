@@ -113,6 +113,11 @@
 		  <artifactId>bootstrap</artifactId>
 		  <version>3.3.7</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>datatables-plugins</artifactId>
+		    <version>1.10.20</version>
+		</dependency>
 
     </dependencies>
 
