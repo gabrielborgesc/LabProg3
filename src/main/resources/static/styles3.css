@@ -1,5 +1,6 @@
 body{
-    background-image: url(background.jpg);
+	background-color: #eb4034;
+/*     background-image: url(background.jpg); */
     background-size: cover; 
     
 }
@@ -40,15 +41,15 @@ table {
   width: 100%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+/* td, th { */
+/*   border: 1px solid #dddddd; */
+/*   text-align: left; */
+/*   padding: 8px; */
+/* } */
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+/* tr:nth-child(even) { */
+/*   background-color: #dddddd; */
+/* } */
 
 #container {
     padding-top: 3em;
